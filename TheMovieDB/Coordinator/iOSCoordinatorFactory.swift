@@ -14,7 +14,11 @@ protocol ViewControllerFactory {
 class iOSCoordinatorFactory: ViewControllerFactory {
    
    func loginViewController() -> UIViewController {
-      return LoginViewController()
+      let loginAPI: LoginAPI = LoginAPI(session: .shared)
+      let loginViewController: LoginViewController = LoginViewController()
+      let viewModel: LoginViewModel = LoginViewModel(api: loginAPI)
+      loginViewController.viewModel = viewModel
+      return loginViewController
    }
    
 }

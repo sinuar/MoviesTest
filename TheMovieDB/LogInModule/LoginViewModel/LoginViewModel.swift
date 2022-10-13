@@ -9,4 +9,33 @@ import Foundation
 
 final class LoginViewModel {
    var userLoginData: UserLoginData?
+   var api: LoginAPI
+   @ViewModelState var state: APIState?
+   
+   init(api: LoginAPI) {
+      self.api = api
+   }
+   
+   
+   func requestLoginAccess() {
+      state = .loading
+      guard let loginData: UserLoginData = userLoginData else { return }
+      api.send(.login, userLoginData: loginData) { result in
+         switch result {
+            case .success(let tweets):
+               self.state = .success
+               print(tweets)
+            case .failure(let error):
+               let error = error as? APIError
+               switch error {
+                  case .internalServer:
+                     print(error)
+                  default:
+                     fatalError()
+               }
+               self.state = .failure
+
+         }
+      }
+   }
 }

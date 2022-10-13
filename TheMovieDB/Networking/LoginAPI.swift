@@ -10,13 +10,13 @@ import Foundation
 struct LoginAPI {
    let session: URLSession
    
-   func send(_ endpoint: Endpoint, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
+   func send(_ endpoint: Endpoint, userLoginData: UserLoginData, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
       var request = endpoint.request
       
       request.httpMethod = "POST"
-      let parameters: [String: Any] = [
-         "username": "sinuar",
-         "password": "sinu1357",
+      let parameters: [String: String] = [
+         "username": userLoginData.username ?? "",
+         "password": userLoginData.password ?? "",
          "request_token": "f5152eed166bb61e1f030e531f47af478f650464"
       ]
       

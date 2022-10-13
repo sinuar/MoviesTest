@@ -20,6 +20,11 @@ enum APIError: Error {
 }
 
 struct UserLoginData {
-   let username: String
-   let password: String
+   var username: String? = nil
+   var password: String? = nil
+}
+
+enum TextFieldTag: Int {
+   case username = 0
+   case password = 1
 }

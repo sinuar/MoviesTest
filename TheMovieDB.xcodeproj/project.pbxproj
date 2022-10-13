@@ -23,6 +23,7 @@
 		0F4E9E5428F79082006AD9FE /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5328F79082006AD9FE /* LoginAPI.swift */; };
 		0F4E9E5628F790D9006AD9FE /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5528F790D9006AD9FE /* LoginModel.swift */; };
 		0F4E9E5828F7C012006AD9FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */; };
+		0FD23C3F28F867CF0074BF90 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C3E28F867CF0074BF90 /* APIState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		0F4E9E5328F79082006AD9FE /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		0F4E9E5528F790D9006AD9FE /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0FD23C3E28F867CF0074BF90 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			children = (
 				0F4E9E5128F78D11006AD9FE /* Endpoint.swift */,
 				0F4E9E5328F79082006AD9FE /* LoginAPI.swift */,
+				0FD23C3E28F867CF0074BF90 /* APIState.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			files = (
 				0F4E9E4A28F7739C006AD9FE /* UsesLayout.swift in Sources */,
 				0F4E9E5628F790D9006AD9FE /* LoginModel.swift in Sources */,
+				0FD23C3F28F867CF0074BF90 /* APIState.swift in Sources */,
 				0F4E9E5428F79082006AD9FE /* LoginAPI.swift in Sources */,
 				0F17595D28F769B2005C2452 /* LoginViewController.swift in Sources */,
 				0F17594128F7568A005C2452 /* ViewController.swift in Sources */,
