@@ -26,7 +26,7 @@ extension Endpoint {
    var request: URLRequest {
       switch self {
          case .login:
-            let url: URL = URL(string: Endpoint.baseURL) ?? URL(fileURLWithPath: "")
+            let url: URL = URL(string: Endpoint.baseURL + string) ?? URL(fileURLWithPath: "")
             return URLRequest(url: url)
       }
    }

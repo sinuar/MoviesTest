@@ -11,6 +11,7 @@ import UIKit
 protocol Coordinator {
     var rootViewController: UINavigationController { get set }
     func start()
+   func goToFilmCollection()
 }
 
 class MainCoordinator: Coordinator {
@@ -25,5 +26,9 @@ class MainCoordinator: Coordinator {
     func start() {
        rootViewController.pushViewController(viewControllerFactory.loginViewController(), animated: false)
     }
+   
+   func goToFilmCollection() {
+      rootViewController.pushViewController(viewControllerFactory.filmCollectionViewController(), animated: true)
+   }
     
 }

@@ -24,6 +24,7 @@
 		0F4E9E5628F790D9006AD9FE /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5528F790D9006AD9FE /* LoginModel.swift */; };
 		0F4E9E5828F7C012006AD9FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */; };
 		0FD23C3F28F867CF0074BF90 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C3E28F867CF0074BF90 /* APIState.swift */; };
+		0FD23C4128F8CFE90074BF90 /* FilmCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4028F8CFE90074BF90 /* FilmCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		0F4E9E5528F790D9006AD9FE /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0FD23C3E28F867CF0074BF90 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
+		0FD23C4028F8CFE90074BF90 /* FilmCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,7 @@
 		0F17593B28F7568A005C2452 /* TheMovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				0FD23C3A28F858E30074BF90 /* FilmListModule */,
+				0FD23C3A28F858E30074BF90 /* FilmCollectionModule */,
 				0F4E9E5028F78CFE006AD9FE /* Networking */,
 				0F4E9E4828F7737C006AD9FE /* Utilities */,
 				0F17595128F7667D005C2452 /* LogInModule */,
@@ -106,7 +108,6 @@
 		0F17595128F7667D005C2452 /* LogInModule */ = {
 			isa = PBXGroup;
 			children = (
-				0F17595728F7673E005C2452 /* LoginCoordinator */,
 				0F17595628F76735005C2452 /* LoginModel */,
 				0F17595528F7670C005C2452 /* LoginViewModel */,
 				0F17595428F766FA005C2452 /* LoginView */,
@@ -138,13 +139,6 @@
 			path = LoginModel;
 			sourceTree = "<group>";
 		};
-		0F17595728F7673E005C2452 /* LoginCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoginCoordinator;
-			sourceTree = "<group>";
-		};
 		0F4E9E4828F7737C006AD9FE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,35 +167,36 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		0FD23C3A28F858E30074BF90 /* FilmListModule */ = {
+		0FD23C3A28F858E30074BF90 /* FilmCollectionModule */ = {
 			isa = PBXGroup;
 			children = (
-				0FD23C3D28F859530074BF90 /* FilmListModel */,
-				0FD23C3C28F859470074BF90 /* FilmListViewModel */,
-				0FD23C3B28F859380074BF90 /* FilmListView */,
+				0FD23C3D28F859530074BF90 /* FilmCollectionModel */,
+				0FD23C3C28F859470074BF90 /* FilmCollectionViewModel */,
+				0FD23C3B28F859380074BF90 /* FilmCollectionView */,
 			);
-			path = FilmListModule;
+			path = FilmCollectionModule;
 			sourceTree = "<group>";
 		};
-		0FD23C3B28F859380074BF90 /* FilmListView */ = {
+		0FD23C3B28F859380074BF90 /* FilmCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0FD23C4028F8CFE90074BF90 /* FilmCollectionViewController.swift */,
 			);
-			path = FilmListView;
+			path = FilmCollectionView;
 			sourceTree = "<group>";
 		};
-		0FD23C3C28F859470074BF90 /* FilmListViewModel */ = {
+		0FD23C3C28F859470074BF90 /* FilmCollectionViewModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = FilmListViewModel;
+			path = FilmCollectionViewModel;
 			sourceTree = "<group>";
 		};
-		0FD23C3D28F859530074BF90 /* FilmListModel */ = {
+		0FD23C3D28F859530074BF90 /* FilmCollectionModel */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = FilmListModel;
+			path = FilmCollectionModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +281,7 @@
 				0F17595B28F7679F005C2452 /* iOSCoordinatorFactory.swift in Sources */,
 				0F4E9E5828F7C012006AD9FE /* LoginViewModel.swift in Sources */,
 				0F17595928F76768005C2452 /* MainCoordinator.swift in Sources */,
+				0FD23C4128F8CFE90074BF90 /* FilmCollectionViewController.swift in Sources */,
 				0F17593D28F7568A005C2452 /* AppDelegate.swift in Sources */,
 				0F17593F28F7568A005C2452 /* SceneDelegate.swift in Sources */,
 				0F4E9E4F28F78CB2006AD9FE /* ViewModelState.swift in Sources */,

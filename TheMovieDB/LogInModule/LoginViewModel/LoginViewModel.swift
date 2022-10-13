@@ -11,6 +11,7 @@ final class LoginViewModel {
    var userLoginData: UserLoginData?
    var api: LoginAPI
    @ViewModelState var state: APIState?
+   var errorMessage: String?
    
    init(api: LoginAPI) {
       self.api = api
@@ -29,6 +30,7 @@ final class LoginViewModel {
                let error = error as? APIError
                switch error {
                   case .internalServer:
+                     self.errorMessage = "Invalid username and/or password. You did not provide a valid login."
                      print(error)
                   default:
                      fatalError()

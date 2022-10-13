@@ -9,6 +9,7 @@ import UIKit
 
 protocol ViewControllerFactory {
    func loginViewController() -> UIViewController
+   func filmCollectionViewController() -> UIViewController
 }
 
 class iOSCoordinatorFactory: ViewControllerFactory {
@@ -19,6 +20,11 @@ class iOSCoordinatorFactory: ViewControllerFactory {
       let viewModel: LoginViewModel = LoginViewModel(api: loginAPI)
       loginViewController.viewModel = viewModel
       return loginViewController
+   }
+   
+   func filmCollectionViewController() -> UIViewController {
+      
+      return FilmCollectionViewController()
    }
    
 }

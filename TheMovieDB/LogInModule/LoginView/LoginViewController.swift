@@ -9,12 +9,12 @@ import UIKit
 
 final class LoginViewController: UIViewController {
    var viewModel: LoginViewModel?
+   
    @UsesLayout private var usernameTextField: UITextField = UITextField()
    @UsesLayout private var passwordTextField: UITextField = UITextField()
    @UsesLayout private var loginButton: UIButton = UIButton()
    @UsesLayout private var errorMessage: UILabel = UILabel()
    private var keyboardHeight: CGFloat = CGFloat()
-
    
    
    override func viewDidLoad() {
@@ -80,7 +80,6 @@ final class LoginViewController: UIViewController {
          errorMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
          errorMessage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
       ])
-      errorMessage.text = "Invalid username and/or password. You did not provide a valid login."
       errorMessage.textColor = .orange
       errorMessage.font = .systemFont(ofSize: 11, weight: .semibold)
       errorMessage.numberOfLines = .zero
@@ -125,9 +124,11 @@ final class LoginViewController: UIViewController {
                case .loading:
                   print("")
                case .success:
-                  print("")
+                  let coordinator: Coordinator = MainCoordinator(rootViewController: self?.navigationController ?? UINavigationController(), viewControllerFactory: iOSCoordinatorFactory())
+                  coordinator.goToFilmCollection()
+                  self?.errorMessage.isHidden = true
                case .failure:
-                  print("")
+                  self?.errorMessage.text = self?.viewModel?.errorMessage ?? ""
                   self?.errorMessage.isHidden = false
 
             }
@@ -174,7 +175,6 @@ extension LoginViewController: UITextFieldDelegate {
    
    @objc private func onKeyboardWillShowFrame(_ notification: NSNotification) {
       usernameTextField.removeConstraints([usernameTextField.constraints[0]])
-      
       let keyboardSize: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)? .cgRectValue ?? CGRect()
       keyboardHeight = keyboardSize.height
       setCommonAnchorsTo(usernameTextField)

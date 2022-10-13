@@ -7,9 +7,17 @@
 
 import Foundation
 
-struct LoginResponse: Decodable {
-   let isSuccessful: Bool
-   let validToken: String
+struct LoginResponse: Codable {
+   let success: Bool
+   let expiresAt: String?
+   let token: String?
+   
+   enum CodingKeys: String, CodingKey {
+      case success = "success"
+      case expiresAt = "expires_at"
+      case token = "request_token"
+   }
+   
 }
 
 enum APIError: Error {
