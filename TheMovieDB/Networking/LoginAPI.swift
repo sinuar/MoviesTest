@@ -17,7 +17,7 @@ struct LoginAPI {
       let parameters: [String: Any] = [
          "username": "sinuar", //userLoginData.username ?? "",
          "password": "sinu1357", //userLoginData.password ?? "",
-         "request_token": "936381f09ebc298d47e0841b0c6c38bcf2d64815"
+         "request_token": "68ed18272e00b2fe475ef3a36875e680f69f5e70"
       ]
       
       

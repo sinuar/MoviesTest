@@ -123,12 +123,12 @@ final class LoginViewController: UIViewController {
       passwordTextField.endEditing(true)
       viewModel?.requestLoginAccess()
       
-      viewModel?.$state.observer = { [weak self] state in
+      viewModel?.$state.observer = { [weak self] (state: APIState?) in
          DispatchQueue.main.async {
             guard let serviceState: APIState = state else { return }
             switch serviceState {
                case .loading:
-                  print("")
+                  self?.errorMessage.text = ""
                case .success:
                   let coordinator: Coordinator = MainCoordinator(rootViewController: self?.navigationController ?? UINavigationController(), viewControllerFactory: iOSCoordinatorFactory())
                   coordinator.goToFilmCollection()
@@ -136,10 +136,8 @@ final class LoginViewController: UIViewController {
                case .failure:
                   self?.errorMessage.text = self?.viewModel?.errorMessage ?? ""
                   self?.errorMessage.isHidden = false
-                  
             }
          }
-         
       }
    }
 }

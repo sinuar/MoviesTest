@@ -30,5 +30,4 @@ class MainCoordinator: Coordinator {
    func goToFilmCollection() {
       rootViewController.pushViewController(viewControllerFactory.filmCollectionViewController(), animated: true)
    }
-   
 }

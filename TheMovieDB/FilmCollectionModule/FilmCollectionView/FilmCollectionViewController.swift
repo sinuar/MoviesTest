@@ -37,6 +37,7 @@ final class FilmCollectionViewController: UIViewController {
       setupView()
       setupNavigationBar()
       setupCollectionView()
+      handleViewModelState()
    }
    
    private func setupView() {
@@ -69,39 +70,61 @@ final class FilmCollectionViewController: UIViewController {
    private func setupCollectionView() {
       view.addSubview(filmCollection)
       NSLayoutConstraint.activate([
-         filmCollection.topAnchor.constraint(equalTo: view.topAnchor, constant: 32),
-         filmCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-         filmCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
-         filmCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8)
+         filmCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+         filmCollection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+         filmCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 8),
+         filmCollection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
       ])
-      filmCollection.backgroundColor = .red
+      filmCollection.backgroundColor = .black
       filmCollection.delegate = self
       filmCollection.dataSource = self
-      filmCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+      filmCollection.register(FilmCollectionCell.self, forCellWithReuseIdentifier: FilmCollectionCell.reuseIdentifier)
       
    }
    
+   private func guaranteeMainThread(_ work: @escaping () -> Void) {
+      if Thread.isMainThread {
+         work()
+      } else {
+         DispatchQueue.main.async(execute: work)
+      }
+   }
+   
+   private func handleViewModelState() {
+      viewModel?.$state.observer = { [weak self] state in
+         guard let filmsState: APIState = state else { return }
+         self?.guaranteeMainThread {
+            switch filmsState {
+               case .loading:
+                  self?.view.showLoader()
+               case .success:
+                  self?.filmCollection.reloadData()
+                  self?.view.removeLoader()
+               case .failure:
+                  self?.view.removeLoader()
+                  // TODO: Show alert
+                  print("failure")
+            }
+         }
+      }
+   }
 }
 
-extension FilmCollectionViewController: UICollectionViewDelegate {
-   
-}
+extension FilmCollectionViewController: UICollectionViewDelegate {}
 
 extension FilmCollectionViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      2
+      return viewModel?.filmList.count ?? .zero
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: FilmCollectionCell.reuseIdentifier, for: indexPath)
+      guard let film: FilmList = viewModel?.filmList[indexPath.item] else { return UICollectionViewCell() }
+      (cell as? FilmCollectionCell)?.setup(with: film)
       
-      let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-      cell.backgroundColor = .systemOrange
+      
       return cell
    }
-   
-   
 }
 
-extension FilmCollectionViewController: UICollectionViewDelegateFlowLayout {
-   
-}
+extension FilmCollectionViewController: UICollectionViewDelegateFlowLayout {}

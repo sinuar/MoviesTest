@@ -30,3 +30,31 @@ extension UITextField {
       }
    }
 }
+    
+extension UIImage {
+  convenience init?(url: URL?) {
+    guard let url = url else { return nil }
+            
+    do {
+      self.init(data: try Data(contentsOf: url))
+    } catch {
+      print("Cannot load image from url: \(url) with error: \(error)")
+      return nil
+    }
+  }
+}
+
+
+extension UIView {
+   
+   func showLoader() {
+      let loader: BlurLoader = BlurLoader(frame: self.frame)
+      self.addSubview(loader)
+   }
+   
+   func removeLoader() {
+      if let loader: UIView = self.subviews.first(where: { $0 is BlurLoader }) {
+         loader.removeFromSuperview()
+      }
+   }
+}

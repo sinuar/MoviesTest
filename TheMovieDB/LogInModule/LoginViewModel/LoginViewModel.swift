@@ -16,27 +16,24 @@ final class LoginViewModel {
    init(api: LoginAPI) {
       self.api = api
    }
-   
-   
+
    func requestLoginAccess() {
       state = .loading
       guard let loginData: UserLoginData = userLoginData else { return }
-      api.send(.login, userLoginData: loginData) { result in
+      api.send(.login, userLoginData: loginData) { [weak self] (result: Result<LoginResponse, Error>) in
          switch result {
             case .success(let loginResponse):
-               self.state = .success
+               self?.state = .success
                print(loginResponse)
             case .failure(let error):
                let error = error as? APIError
                switch error {
                   case .internalServer:
-                     print("error")
+                     self?.errorMessage = "Something went wrong"
                   default:
-                     self.errorMessage = "Something went wrong"
-                     fatalError()
+                     self?.errorMessage = "Something went wrong"
                }
-               self.state = .failure
-
+               self?.state = .failure
          }
       }
    }

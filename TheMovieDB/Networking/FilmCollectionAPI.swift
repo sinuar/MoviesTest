@@ -15,7 +15,7 @@ enum HTTPMethod: String {
 struct FilmCollectionAPI {   
    let session: URLSession
      
-     func load(_ endpoint: Endpoint, completion: @escaping (Result<FilmCollection, Error>) -> ()) {
+     func load(_ endpoint: Endpoint, completion: @escaping (Result<FilmCollectionService, Error>) -> ()) {
          var request = endpoint.request
          
         request.httpMethod = HTTPMethod.GET.rawValue
@@ -33,7 +33,7 @@ struct FilmCollectionAPI {
              }
              
              do {
-                let filmCollection: FilmCollection = try JSONDecoder().decode(FilmCollection.self, from: data)
+                let filmCollection: FilmCollectionService = try JSONDecoder().decode(FilmCollectionService.self, from: data)
                 completion(.success(filmCollection))
                  
              } catch {
