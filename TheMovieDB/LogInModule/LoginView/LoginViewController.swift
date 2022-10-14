@@ -15,6 +15,7 @@ final class LoginViewController: UIViewController {
    @UsesLayout private var loginButton: UIButton = UIButton()
    @UsesLayout private var errorMessage: UILabel = UILabel()
    private var keyboardHeight: CGFloat = CGFloat()
+   private var usernameCenterYConstraint: NSLayoutConstraint?
    
    
    override func viewDidLoad() {
@@ -27,6 +28,9 @@ final class LoginViewController: UIViewController {
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       setupView()
+   }
+   
+   override func viewWillLayoutSubviews() {
       addKeyboardWillHideNotification()
       addKeyboardWillShowFrameNotification()
    }
@@ -55,13 +59,14 @@ final class LoginViewController: UIViewController {
    private func addUsernameTextField() {
       view.addSubview(usernameTextField)
       setCommonAnchorsTo(usernameTextField)
-      usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+      setupUsernameCenterYConstraint()
       setStyleTo(usernameTextField, cornerRadius: 8, placeholder: "Username")
    }
    
    private func addPasswordTextField() {
       view.addSubview(passwordTextField)
       setCommonAnchorsTo(passwordTextField)
+      passwordTextField.isSecureTextEntry = true
       passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: 20).isActive = true
       setStyleTo(passwordTextField, cornerRadius: 8, placeholder: "Password")
    }
@@ -80,6 +85,7 @@ final class LoginViewController: UIViewController {
          errorMessage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
          errorMessage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9)
       ])
+      errorMessage.text = "Invalid username and/or password. You did not provide a valid login."
       errorMessage.textColor = .orange
       errorMessage.font = .systemFont(ofSize: 11, weight: .semibold)
       errorMessage.numberOfLines = .zero
@@ -130,7 +136,7 @@ final class LoginViewController: UIViewController {
                case .failure:
                   self?.errorMessage.text = self?.viewModel?.errorMessage ?? ""
                   self?.errorMessage.isHidden = false
-
+                  
             }
          }
          
@@ -174,18 +180,38 @@ extension LoginViewController: UITextFieldDelegate {
    }
    
    @objc private func onKeyboardWillShowFrame(_ notification: NSNotification) {
-      usernameTextField.removeConstraints([usernameTextField.constraints[0]])
       let keyboardSize: CGRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)? .cgRectValue ?? CGRect()
       keyboardHeight = keyboardSize.height
-      setCommonAnchorsTo(usernameTextField)
-      usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -keyboardHeight/2).isActive = true
+      
+      let previewsCenterYConstraint = view.constraints.first { constraint in
+         constraint.identifier == "defaultUsernameCenterYConstraint"
+      }
+      guard let constraintToRemove = previewsCenterYConstraint else { return }
+      view.removeConstraint(constraintToRemove)
+      let displacedConstraint: NSLayoutConstraint = usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -keyboardHeight/2)
+      displacedConstraint.isActive = true
+      displacedConstraint.identifier = "displacedUsernameCenterYConstraint"
+      view.layoutIfNeeded()
+      print("")
    }
    
    @objc private func onKeyboardWillHide() {
-      
-      
+      let previewsCenterYConstraint = view.constraints.first { constraint in
+         constraint.identifier == "displacedUsernameCenterYConstraint"
+      }
+      guard let constraintToRemove = previewsCenterYConstraint else { return }
+      view.removeConstraint(constraintToRemove)
+      setupUsernameCenterYConstraint()
+      print("")
       view.layoutIfNeeded()
    }
-
+   
+   private func setupUsernameCenterYConstraint() {
+      usernameCenterYConstraint = usernameTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      usernameCenterYConstraint?.isActive = true
+      usernameCenterYConstraint?.identifier = "defaultUsernameCenterYConstraint"
+      
+   }
+   
 }
 
