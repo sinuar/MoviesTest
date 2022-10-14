@@ -23,8 +23,13 @@ class iOSCoordinatorFactory: ViewControllerFactory {
    }
    
    func filmCollectionViewController() -> UIViewController {
-      
-      return FilmCollectionViewController()
+      let filmCollectionAPI: FilmCollectionAPI = FilmCollectionAPI(session: .shared)
+      let filmCollectionViewController: FilmCollectionViewController = FilmCollectionViewController()
+      let viewModel: FilmCollectionViewModel = FilmCollectionViewModel(api: filmCollectionAPI)
+      filmCollectionViewController.viewModel = viewModel
+      return filmCollectionViewController
    }
+   
+   
    
 }

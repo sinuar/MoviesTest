@@ -25,6 +25,10 @@
 		0F4E9E5828F7C012006AD9FE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */; };
 		0FD23C3F28F867CF0074BF90 /* APIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C3E28F867CF0074BF90 /* APIState.swift */; };
 		0FD23C4128F8CFE90074BF90 /* FilmCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4028F8CFE90074BF90 /* FilmCollectionViewController.swift */; };
+		0FD23C4328F9A9CB0074BF90 /* FilmCollectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4228F9A9CB0074BF90 /* FilmCollectionAPI.swift */; };
+		0FD23C4528F9ABE70074BF90 /* FilmCollectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4428F9ABE70074BF90 /* FilmCollectionModel.swift */; };
+		0FD23C4728F9CF050074BF90 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4628F9CF050074BF90 /* APIError.swift */; };
+		0FD23C4928F9D2F20074BF90 /* FilmCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD23C4828F9D2F20074BF90 /* FilmCollectionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		0F4E9E5728F7C012006AD9FE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0FD23C3E28F867CF0074BF90 /* APIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIState.swift; sourceTree = "<group>"; };
 		0FD23C4028F8CFE90074BF90 /* FilmCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewController.swift; sourceTree = "<group>"; };
+		0FD23C4228F9A9CB0074BF90 /* FilmCollectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionAPI.swift; sourceTree = "<group>"; };
+		0FD23C4428F9ABE70074BF90 /* FilmCollectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionModel.swift; sourceTree = "<group>"; };
+		0FD23C4628F9CF050074BF90 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		0FD23C4828F9D2F20074BF90 /* FilmCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmCollectionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				0F4E9E5128F78D11006AD9FE /* Endpoint.swift */,
-				0F4E9E5328F79082006AD9FE /* LoginAPI.swift */,
 				0FD23C3E28F867CF0074BF90 /* APIState.swift */,
+				0F4E9E5328F79082006AD9FE /* LoginAPI.swift */,
+				0FD23C4228F9A9CB0074BF90 /* FilmCollectionAPI.swift */,
+				0FD23C4628F9CF050074BF90 /* APIError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 		0FD23C3C28F859470074BF90 /* FilmCollectionViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0FD23C4828F9D2F20074BF90 /* FilmCollectionViewModel.swift */,
 			);
 			path = FilmCollectionViewModel;
 			sourceTree = "<group>";
@@ -195,6 +206,7 @@
 		0FD23C3D28F859530074BF90 /* FilmCollectionModel */ = {
 			isa = PBXGroup;
 			children = (
+				0FD23C4428F9ABE70074BF90 /* FilmCollectionModel.swift */,
 			);
 			path = FilmCollectionModel;
 			sourceTree = "<group>";
@@ -270,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FD23C4328F9A9CB0074BF90 /* FilmCollectionAPI.swift in Sources */,
 				0F4E9E4A28F7739C006AD9FE /* UsesLayout.swift in Sources */,
 				0F4E9E5628F790D9006AD9FE /* LoginModel.swift in Sources */,
 				0FD23C3F28F867CF0074BF90 /* APIState.swift in Sources */,
@@ -282,9 +295,12 @@
 				0F4E9E5828F7C012006AD9FE /* LoginViewModel.swift in Sources */,
 				0F17595928F76768005C2452 /* MainCoordinator.swift in Sources */,
 				0FD23C4128F8CFE90074BF90 /* FilmCollectionViewController.swift in Sources */,
+				0FD23C4528F9ABE70074BF90 /* FilmCollectionModel.swift in Sources */,
+				0FD23C4928F9D2F20074BF90 /* FilmCollectionViewModel.swift in Sources */,
 				0F17593D28F7568A005C2452 /* AppDelegate.swift in Sources */,
 				0F17593F28F7568A005C2452 /* SceneDelegate.swift in Sources */,
 				0F4E9E4F28F78CB2006AD9FE /* ViewModelState.swift in Sources */,
+				0FD23C4728F9CF050074BF90 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

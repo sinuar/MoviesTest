@@ -1,31 +1,29 @@
 //
-//  LoginViewModel.swift
+//  FilmCollectionViewModel.swift
 //  TheMovieDB
 //
-//  Created by Sinuhé Ruedas on 12/10/22.
+//  Created by Sinuhé Ruedas on 14/10/22.
 //
 
 import Foundation
 
-final class LoginViewModel {
-   var userLoginData: UserLoginData?
-   var api: LoginAPI
+final class FilmCollectionViewModel {
+   var api: FilmCollectionAPI
    @ViewModelState var state: APIState?
    var errorMessage: String?
    
-   init(api: LoginAPI) {
+   init(api: FilmCollectionAPI) {
       self.api = api
    }
    
    
-   func requestLoginAccess() {
+   func requestFilms() {
       state = .loading
-      guard let loginData: UserLoginData = userLoginData else { return }
-      api.send(.login, userLoginData: loginData) { result in
+      api.load(.films) { result in
          switch result {
-            case .success(let loginResponse):
+            case .success(let films):
                self.state = .success
-               print(loginResponse)
+               print(films)
             case .failure(let error):
                let error = error as? APIError
                switch error {

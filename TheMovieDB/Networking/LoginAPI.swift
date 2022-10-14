@@ -13,12 +13,11 @@ struct LoginAPI {
    func send(_ endpoint: Endpoint, userLoginData: UserLoginData, completion: @escaping (Result<LoginResponse, Error>) -> Void) {
       var request = endpoint.request
          
-         
-      request.httpMethod = "POST"
+      request.httpMethod = HTTPMethod.POST.rawValue
       let parameters: [String: Any] = [
          "username": "sinuar", //userLoginData.username ?? "",
          "password": "sinu1357", //userLoginData.password ?? "",
-         "request_token": "037607aa1808bd0c3b4393e54d361bb5b5f104a9"
+         "request_token": "936381f09ebc298d47e0841b0c6c38bcf2d64815"
       ]
       
       

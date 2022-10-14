@@ -20,13 +20,6 @@ struct LoginResponse: Codable {
    
 }
 
-enum APIError: Error {
-     case noData
-     case response
-     case parsingData
-     case internalServer
-}
-
 struct UserLoginData {
    var username: String? = nil
    var password: String? = nil

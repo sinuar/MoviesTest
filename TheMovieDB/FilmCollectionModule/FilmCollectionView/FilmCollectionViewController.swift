@@ -11,7 +11,7 @@ final class FilmCollectionViewController: UIViewController {
    // MARK :- PROPERTIES
    @UsesLayout private var filmCollection: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
 
-//   var viewModel
+   var viewModel: FilmCollectionViewModel?
    
    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
       super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -29,6 +29,7 @@ final class FilmCollectionViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      viewModel?.requestFilms()
    }
    
    override func viewWillAppear(_ animated: Bool) {
@@ -51,12 +52,14 @@ final class FilmCollectionViewController: UIViewController {
       appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
       navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(goToProfile))
+      
+      
       navigationItem.setHidesBackButton(true, animated: true)
       navigationController?.navigationBar.tintColor = .lightGray
       navigationController?.navigationBar.standardAppearance = appearance
       navigationController?.navigationBar.compactAppearance = appearance
       navigationController?.navigationBar.scrollEdgeAppearance = appearance
-      self.title = "TV Shows"
+      self.title = "Films"
    }
    
    @objc private func goToProfile() {
