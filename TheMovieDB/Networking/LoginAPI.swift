@@ -15,9 +15,9 @@ struct LoginAPI {
          
       request.httpMethod = HTTPMethod.POST.rawValue
       let parameters: [String: Any] = [
-         "username": "sinuar", //userLoginData.username ?? "",
-         "password": "sinu1357", //userLoginData.password ?? "",
-         "request_token": "68ed18272e00b2fe475ef3a36875e680f69f5e70"
+         "username": userLoginData.username ?? "",
+         "password": userLoginData.password ?? "",
+         "request_token": Credentials.requestToken
       ]
       
       

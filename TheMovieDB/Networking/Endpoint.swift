@@ -15,7 +15,7 @@ enum Endpoint {
 
 extension Endpoint {
    var apiKey: String {
-      "a2540b1797d974a24f35f1e2381611dc"
+      Credentials.apiKey
    }
    var string: String {
       switch self {
