@@ -29,7 +29,7 @@ final class LoginViewModel {
                let error = error as? APIError
                switch error {
                   case .internalServer:
-                     self?.errorMessage = "Something went wrong"
+                     self?.errorMessage = "Invalid username and/or password. You did not provide a valid login."
                   default:
                      self?.errorMessage = "Something went wrong"
                }
