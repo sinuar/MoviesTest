@@ -4,7 +4,7 @@ api_key:
 a2540b1797d974a24f35f1e2381611dc
 
 request_token:
-4224238153aaff7a0e80140692e0bc6988bed9bc
+506f5522b0ce8347b6d7ade8b4d8e3325e0ec624
 
 En caso de necesitar modificar las credenciales, hacerlo en el enum Credentials, dentro del grupo Networking.
 
